@@ -2,47 +2,47 @@
 <!DOCTYPE html> 
 <html>
 <head>
-	<title>Details</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="libs/jquery.mobile-1.4.2.min.css" />	<!-- http://code.jquery.com/mobile/1.4.2/ -->
-	<script src="libs/jquery-1.9.1.min.js"></script>
-	<script src="libs/jquery.mobile-1.4.2.min.js"></script> <!-- http://code.jquery.com/mobile/1.4.2/ -->
-	<link rel="stylesheet" href="css/styles.css" />
+  <title>Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="libs/jquery.mobile-1.4.2.min.css" />  <!-- http://code.jquery.com/mobile/1.4.2/ -->
+  <script src="libs/jquery-1.9.1.min.js"></script>
+  <script src="libs/jquery.mobile-1.4.2.min.js"></script> <!-- http://code.jquery.com/mobile/1.4.2/ -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-	
+  
 <div data-role="page" id="print">
-	<a href="#devices"><img id="logo" src="img/logo_stl.gif"></a>
+  <a href="#devices"><img id="logo" src="img/logo_stl.gif"></a>
 
-	<div data-role="header">
-		<a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
-		<h1>3D-Print STL</h1>
-	</div><!-- /header -->
+  <div data-role="header">
+    <a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1>3D-Print STL</h1>
+  </div><!-- /header -->
 
-	<div role="main" class="ui-content">
-		<!-- <input type="file" name="file" placeholder="STL file" value="" disabled="yes" > -->
+  <div role="main" class="ui-content">
+    <!-- <input type="file" name="file" placeholder="STL file" value="" disabled="yes" > -->
 
-		<input type="text" id="stl_file" name="stl_file" placeholder="http://yoursite.com/yourstl.stl" value="http://companje.nl/cura/upload/20mm_Calibration_Box.stl">
-		<a href="#printing" class="ui-shadow ui-btn ui-corner-all" id="btnPrint">3D-Print</a>
-	</div><!-- /content -->
+    <input type="text" id="stl_file" name="stl_file" placeholder="http://yoursite.com/yourstl.stl" value="http://companje.nl/cura/upload/20mm_Calibration_Box.stl">
+    <a href="#printing" class="ui-shadow ui-btn ui-corner-all" id="btnPrint">3D-Print</a>
+  </div><!-- /content -->
 </div><!-- /page -->
 
 <div data-role="page" id="printing">
-	<a href="#devices"><img id="logo" src="img/logo_stl.gif"></a>
+  <a href="#devices"><img id="logo" src="img/logo_stl.gif"></a>
 
-	<div data-role="header">
-		<a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
-		<h1>Printing...</h1>
-	</div><!-- /header -->
+  <div data-role="header">
+    <a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1>Printing...</h1>
+  </div><!-- /header -->
 
-	<div role="main" class="ui-content">
-		<a id="btnStop" href="#print" class="ui-shadow ui-btn ui-corner-all">Stop Print</a>
-	</div><!-- /content -->
+  <div role="main" class="ui-content">
+    <a id="btnStop" href="#print" class="ui-shadow ui-btn ui-corner-all">Stop Print</a>
+  </div><!-- /content -->
 </div><!-- /page -->
 
 <div data-role="page" id="update">
-	<div data-role="header"></div><!-- /header -->
+  <div data-role="header"></div><!-- /header -->
 </div><!-- /page -->
 
 <script src="js/main.js"></script>
