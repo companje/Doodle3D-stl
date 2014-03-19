@@ -1,0 +1,23 @@
+body {
+	text-align: center;
+}
+
+#logo {
+	margin: 10px 5px 5px 5px;
+	max-width: 200px;
+}
+
+#drawingCanvas {
+	border: 2px solid black;
+	height: 20em;
+	width: 100%;
+	border-radius: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+	body {
+		padding-left: 20em;
+		padding-right: 20em;
+	}
+
+}
