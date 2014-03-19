@@ -57,8 +57,8 @@
 	$("#btnStop").click(function() {
 		console.log("stop print");
 		$.ajax({
-		  url: doodle3d_api + "printer/stop",
-		  type: "POST"
+			url: doodle3d_api + "printer/stop",
+			type: "POST"
 		});
 	});
 
@@ -99,24 +99,24 @@
 		
 		showLoader(true,"Uploading GCODE... "+(Math.ceil((current+1)/(chunks.length)*100))+"%");
 
-    $.ajax({
-		  url: doodle3d_api + "printer/print",
-		  type: "POST",
-		  data: data,
-		  dataType: 'json',
-		  timeout: 5000, //this.sendPrintPartTimeoutTime,
-		  success: function(data) {
-		  	console.log("send chunk",current,"success",data);
-		  	
-		  	if (current>=chunks.length-1) {
-		  		console.log("done");
+		$.ajax({
+			url: doodle3d_api + "printer/print",
+			type: "POST",
+			data: data,
+			dataType: 'json',
+			timeout: 5000, //this.sendPrintPartTimeoutTime,
+			success: function(data) {
+				console.log("send chunk",current,"success",data);
+				
+				if (current>=chunks.length-1) {
+					console.log("done");
 					showLoader(false);
-		  	} else if (data.status=="success") {
-		  		sendChunk(current+1);
-		  	} else if (data.status=="error") {
+				} else if (data.status=="success") {
+					sendChunk(current+1);
+				} else if (data.status=="error") {
 
-		  	}
-		  }
+				}
+			}
 		}).fail(function(data) {
 			console.log("send chunk failed",data);
 		});		
