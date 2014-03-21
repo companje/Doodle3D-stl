@@ -25,8 +25,8 @@ $("#btnPrint").click(function() {
   showLoader(true,"Converting STL to GCODE...");
 
   setInterval(updateProgress,1000);
-
-  sendGCODE($("#txt_gcode").text());
+ 
+  sendGCODE($("#txt_gcode").val());
   
 
   //var gcode_file = cura_api + "?input=" + $("#stl_file").val();
