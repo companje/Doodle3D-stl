@@ -70,20 +70,22 @@ function sendChunk(current) {
     data: data,
     dataType: 'json',
     timeout: 5000, //this.sendPrintPartTimeoutTime,
-    success: function(data) {
-      console.log("send chunk i=",current,"success",data);
+    success: function(response) {
+      console.log("send chunk i=",current," response",response);
       
-      if (current>=chunks.length-1) {
-        console.log("done");
-        showLoader(false);
-      } else if (data.status=="success") {
-        sendChunk(current+1);
-      } else if (data.status=="error") {
-
+      if (response.status=="success") {
+      	if (current>=chunks.length-1) {
+          console.log("done");
+          showLoader(false);
+        } else {
+        	sendChunk(current+1);
+        }
+      } else {
+      	console.log("sending chunk issue: ",response.status,response.msg);
       }
     }
-  }).fail(function(data) {
-    console.log("send chunk failed",data);
+  }).fail(function() {
+    console.log("send chunk failed ");
   });    
 }
 
