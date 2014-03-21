@@ -16,35 +16,46 @@ $("#btnStop").click(function() {
   });
 });
 
+$("#txtWiFiBoxIP").change(function() {
+	console.log(this.value);
+	//wifibox_ip = $
+});
+
 $("#btnPrint").click(function() {
   showLoader(true,"Converting STL to GCODE...");
 
   setInterval(updateProgress,1000);
 
-  var gcode_file = cura_api + "?input=" + $("#stl_file").val();
-
-  $.get(gcode_file, function(data) {
-    gcode = data;
-
-    var lines = gcode.split("\n");
-    var chunkMaxLines = 500;
-    chunks = []; //empty
-
-    console.log("total lines: ",lines.length);
-    console.log("dividing into: ",Math.ceil(lines.length/chunkMaxLines),"chunks");
-    console.log("average chunk size: ",lines.slice(0,500).join("\n").length,"bytes")
-
-    for (var i=0; i<lines.length / chunkMaxLines; i++) {
-      var from = i*chunkMaxLines;
-      var to = chunkMaxLines*(i+1)-1;
-      to = Math.min(to,lines.length-1);
-      var chunk = lines.slice(from,to).join("\n");
-      chunks.push(chunk);
-    }
+  sendGCODE($("#txt_gcode").text());
   
-    sendChunk(0);
-  })
+
+  //var gcode_file = cura_api + "?input=" + $("#stl_file").val();
+  // $.get(gcode_file, function(data) {
+  //   sendGCODE(data);
+  // })
+
+
 });
+
+function sendGCODE(gcode) {
+  var lines = gcode.split("\n");
+  var chunkMaxLines = 500;
+  chunks = []; //empty
+
+  console.log("total lines: ",lines.length);
+  console.log("dividing into: ",Math.ceil(lines.length/chunkMaxLines),"chunks");
+  console.log("average chunk size: ",lines.slice(0,500).join("\n").length,"bytes")
+
+  for (var i=0; i<lines.length / chunkMaxLines; i++) {
+    var from = i*chunkMaxLines;
+    var to = chunkMaxLines*(i+1)-1;
+    to = Math.min(to,lines.length-1);
+    var chunk = lines.slice(from,to).join("\n");
+    chunks.push(chunk);
+  }
+
+  sendChunk(0);
+}
 
 function sendChunk(current) {
   console.log("sending chunk",current+1,"of",chunks.length);
@@ -60,7 +71,7 @@ function sendChunk(current) {
     dataType: 'json',
     timeout: 5000, //this.sendPrintPartTimeoutTime,
     success: function(data) {
-      console.log("send chunk",current,"success",data);
+      console.log("send chunk i=",current,"success",data);
       
       if (current>=chunks.length-1) {
         console.log("done");
